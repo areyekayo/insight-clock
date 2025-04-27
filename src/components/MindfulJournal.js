@@ -10,11 +10,9 @@ function MindfulJournal() {
             .then((data) => setJournalEntry(data))
     }, [])
 
-    console.log(journalEntries)
-
     return (
         <div>
-            {journalEntries.map((entry) => <JournalCard key={entry.id} date={entry.date} mood={entry.mood} entry={entry.entry}  />)}
+            {journalEntries.map((entry) => <JournalCard key={entry.id} date={entry.date} mood={entry.mood} description={entry.description} activity={entry.activity} duration={entry.duration} />)}
         </div>
     )
 };
