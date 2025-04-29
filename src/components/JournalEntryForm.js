@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 function JournalEntryForm({onSubmitEntry}) {
     const [newEntry, setNewEntry] = useState({
-        date: "",
+        date: new Intl.DateTimeFormat("en-US", {year: "numeric", month: "2-digit", day: "2-digit"}).format(Date.now()),
         mood: "",
         activity: "",
         duration: 0,
@@ -33,8 +33,22 @@ function JournalEntryForm({onSubmitEntry}) {
         <div className="new-entry-form">
             <h2>Add Journal Entry</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="mood" placeholder="Mood" onChange={handleChange} value={newEntry.mood} />
-                <input type="text" name="activity" placeholder="Activity" onChange={handleChange} value={newEntry.activity} />
+                <select name="mood" onChange={handleChange}>
+                    <option value="great">Great</option>
+                    <option value="good">Good</option>
+                    <option value="meh">Meh</option>
+                    <option value="bad">Bad</option>
+                    <option value="awful">Awful</option>
+                </select>
+                <select name="activity" onChange={handleChange}>
+                    <option value="sitting">Sitting</option>
+                    <option value="walking">Walking</option>
+                    <option value="yoga">Yoga</option>
+                    <option value="retreat">Retreat</option>
+                </select>
+                <input type="text" placeholder="Activity Duration" name="duration" value={newEntry.duration} onChange={handleChange}/>
+                <input type="text" placeholder="Description" name="description" value={newEntry.description} onChange={handleChange} />
+                <button type="submit">Add Entry</button>
             </form>
         </div>
     )
