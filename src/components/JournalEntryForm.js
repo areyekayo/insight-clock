@@ -17,6 +17,7 @@ function JournalEntryForm({onSubmitEntry}) {
     };
 
     function handleSubmit(event){
+        console.log("new entry on submit", newEntry)
         event.preventDefault();
         fetch("http://localhost:3000/entries", {
             method: "POST",
@@ -34,6 +35,7 @@ function JournalEntryForm({onSubmitEntry}) {
             <h2>Add Journal Entry</h2>
             <form onSubmit={handleSubmit}>
                 <select name="mood" onChange={handleChange}>
+                    <option>Select Mood</option>
                     <option value="great">Great</option>
                     <option value="good">Good</option>
                     <option value="meh">Meh</option>
@@ -41,6 +43,7 @@ function JournalEntryForm({onSubmitEntry}) {
                     <option value="awful">Awful</option>
                 </select>
                 <select name="activity" onChange={handleChange}>
+                    <option>Select Activity</option>
                     <option value="sitting">Sitting</option>
                     <option value="walking">Walking</option>
                     <option value="yoga">Yoga</option>
