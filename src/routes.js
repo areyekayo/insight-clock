@@ -10,12 +10,6 @@ const routes = [
     {
         path: "/journal",
         element: <MindfulJournal />,
-        children: [
-            {
-                path: "/entry/:id",
-                element: <JournalPage />
-            }
-        ]
     },
     {
         path: "/newEntry",
