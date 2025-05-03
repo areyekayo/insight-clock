@@ -23,3 +23,22 @@ code {
   box-shadow: 3px 4px #000000;
   overflow: scroll;
 }
+
+.new-entry-form {
+  width: 80%;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+.new-entry-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.new-entry-form form > * {
+  width: 100%;
+}
+
+.new-entry-form textarea {
+  height: 5rem;
+}

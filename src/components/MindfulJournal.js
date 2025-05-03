@@ -15,6 +15,8 @@ function MindfulJournal() {
         setJournalEntry([...journalEntries, newEntry])
     }
 
+    
+
     return (
         <>
         <div>

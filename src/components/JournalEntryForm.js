@@ -49,8 +49,20 @@ function JournalEntryForm({onSubmitEntry}) {
                     <option value="yoga">Yoga</option>
                     <option value="retreat">Retreat</option>
                 </select>
-                <input type="text" placeholder="Activity Duration" name="duration" value={newEntry.duration} onChange={handleChange}/>
-                <input type="text" placeholder="Description" name="description" value={newEntry.description} onChange={handleChange} />
+                <input 
+                    type="number"
+                    name="duration"
+                    placeholder="Activity Duration (minutes)"
+                    value={newEntry.duration}
+                    onChange={handleChange}
+
+                />
+                <textarea 
+                    placeholder="Description"
+                    name="description"
+                    value={newEntry.description}
+                    onChange={handleChange}
+                />
                 <button type="submit">Add Entry</button>
             </form>
         </div>
