@@ -28,6 +28,8 @@ code {
   width: 80%;
   max-width: 400px;
   margin: 2rem auto;
+  text-align: center;
+  font-family: 'Roboto';
 }
 .new-entry-form form {
   display: flex;
@@ -37,8 +39,9 @@ code {
 
 .new-entry-form form > * {
   width: 100%;
+  font-family: 'Roboto Mono';
 }
 
 .new-entry-form textarea {
-  height: 5rem;
+  height: 7rem;
 }
