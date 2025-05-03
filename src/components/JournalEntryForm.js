@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
 function JournalEntryForm({onSubmitEntry}) {
+
     const [newEntry, setNewEntry] = useState({
         date: new Intl.DateTimeFormat("en-US", {year: "numeric", month: "2-digit", day: "2-digit"}).format(Date.now()),
         mood: "",
@@ -53,9 +54,8 @@ function JournalEntryForm({onSubmitEntry}) {
                     type="number"
                     name="duration"
                     placeholder="Activity Duration (minutes)"
-                    value={newEntry.duration}
                     onChange={handleChange}
-
+                    value={newEntry.duration}
                 />
                 <textarea 
                     placeholder="Description"

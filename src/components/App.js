@@ -2,6 +2,8 @@ import '../App.css';
 import React, {useState, useEffect} from "react";
 import JournalCard from "./JournalCard";
 import JournalEntryForm from "./JournalEntryForm";
+import NavBar from "./NavBar";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [journalEntries, setJournalEntry] = useState([]);
@@ -18,13 +20,17 @@ function App() {
 
   return (
     <div className="App">
+      <Router>
       <header className="App-header">
         <h1>Mindful Journal</h1>
+        <NavBar />
       </header>
-      <JournalEntryForm onSubmitEntry={addNewEntry} />
-      {journalEntries.map((entry) => <JournalCard key={entry.id} date={entry.date} mood={entry.mood} description={entry.description} activity={entry.activity} duration={entry.duration} />)}
+      <Routes>
+        <Route path="/" element={journalEntries.map((entry) => <JournalCard key={entry.id} date={entry.date} mood={entry.mood} description={entry.description} activity={entry.activity} duration={entry.duration} />)} />
+        <Route path="/newEntry" element={<JournalEntryForm onSubmitEntry={addNewEntry} />} />
+      </Routes>
+      </Router>
     </div>
-    
   );
 }
 
