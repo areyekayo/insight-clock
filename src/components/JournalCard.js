@@ -1,6 +1,6 @@
 import React from "react";
 
-function JournalCard({date, mood, description, duration, activity }) {
+function JournalCard({date, count, moods, activities, time }) {
 
     const dateObj = new Date(date);
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -9,9 +9,11 @@ function JournalCard({date, mood, description, duration, activity }) {
     return (
         <div className="card">
             <h1>{formattedDate}</h1>
-            <p>Mood: {mood}</p>
-            <p>{activity}, {duration} minutes</p>
-            <p>{description}</p>
+            <p>Number of entries: {count}</p>
+            <p>Moods: {moods}</p>
+            <p>Activities: {activities}</p>
+            <p>Total mindful time: {time}</p>
+
         </div>
     )
 }

@@ -18,7 +18,6 @@ function JournalEntryForm({onSubmitEntry}) {
     };
 
     function handleSubmit(event){
-        console.log("new entry on submit", newEntry)
         event.preventDefault();
         fetch("http://localhost:3000/entries", {
             method: "POST",
@@ -50,6 +49,7 @@ function JournalEntryForm({onSubmitEntry}) {
                     <option value="yoga">Yoga</option>
                     <option value="retreat">Retreat</option>
                 </select>
+                <p>Activity Duration (minutes):</p>
                 <input 
                     type="number"
                     name="duration"

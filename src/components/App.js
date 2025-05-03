@@ -18,6 +18,32 @@ function App() {
       setJournalEntry([...journalEntries, newEntry])
   }
 
+  //create new date objects with journal entries to display as date cards
+  const dateCards = journalEntries.reduce((acc, entry) => {
+    //check if there's already an entry for the date
+    const dateObj = acc.find(item => item.date === entry.date);
+    if (dateObj) {
+      //if date exists, update count, ids, activities, and moods
+      dateObj.count += 1;
+      dateObj.ids.push(entry.id);
+      dateObj.activities.push(entry.activity);
+      dateObj.moods.push(entry.mood);
+      dateObj.time += entry.duration;
+    } else {
+      acc.push({
+        date: entry.date,
+        count: 1,
+        ids: [entry.id],
+        activities: [entry.activity],
+        moods: [entry.mood],
+        time: entry.duration
+      });
+    }
+    return acc;
+  }, [])
+
+  console.log(dateCards)
+
   return (
     <div className="App">
       <Router>
@@ -26,7 +52,9 @@ function App() {
         <NavBar />
       </header>
       <Routes>
-        <Route path="/" element={journalEntries.map((entry) => <JournalCard key={entry.id} date={entry.date} mood={entry.mood} description={entry.description} activity={entry.activity} duration={entry.duration} />)} />
+
+        <Route path="/" element={dateCards.map((dateEntry) => <JournalCard key={dateEntry.date} date={dateEntry.date} count={dateEntry.count} moods={dateEntry.moods} activities={dateEntry.activities} time={dateEntry.time} />)} />
+
         <Route path="/newEntry" element={<JournalEntryForm onSubmitEntry={addNewEntry} />} />
       </Routes>
       </Router>
