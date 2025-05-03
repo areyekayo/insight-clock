@@ -1,6 +1,6 @@
-import App from "./App";
-import MindfulJournal from "./MindfulJournal";
-import JournalEntryForm from "./JournalEntryForm";
+import App from "./components/App";
+import MindfulJournal from "./components/MindfulJournal";
+import JournalEntryForm from "./components/JournalEntryForm";
 
 const routes = [
     {
