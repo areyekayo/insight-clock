@@ -1,13 +1,28 @@
-import MindfulJournal from "./MindfulJournal";
 import '../App.css';
+import React, {useState, useEffect} from "react";
+import JournalCard from "./JournalCard";
+import JournalEntryForm from "./JournalEntryForm";
 
 function App() {
+  const [journalEntries, setJournalEntry] = useState([]);
+    
+  useEffect(() => {
+      fetch("http://localhost:3000/entries")
+          .then((r) => r.json())
+          .then((data) => setJournalEntry(data))
+  }, [])
+
+  function addNewEntry(newEntry) {
+      setJournalEntry([...journalEntries, newEntry])
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Mindful Journal</h1>
       </header>
-      <MindfulJournal />
+      <JournalEntryForm onSubmitEntry={addNewEntry} />
+      {journalEntries.map((entry) => <JournalCard key={entry.id} date={entry.date} mood={entry.mood} description={entry.description} activity={entry.activity} duration={entry.duration} />)}
     </div>
     
   );
