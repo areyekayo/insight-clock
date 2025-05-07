@@ -1,7 +1,5 @@
 import '../App.css';
 import React, {useState, useEffect} from "react";
-import JournalEntryForm from "./JournalEntryForm";
-import Home from "./Home";
 import NavBar from "./NavBar";
 import { Outlet } from 'react-router-dom';
 
@@ -50,7 +48,7 @@ function App() {
             <h1>Mindful Journal</h1>
             <NavBar />
           </header>
-            <Outlet context={{journalEntries, dateCards, addNewEntry}} />
+            <Outlet context={{entries: journalEntries, dates: dateCards, onSubmitEntry: addNewEntry}} />
             {/* <Home dateCards={dateCards} /> 
             <JournalEntryForm onSubmitEntry={addNewEntry} /> */}
       </div>

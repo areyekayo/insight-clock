@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 
 function JournalEntryForm() {
 
-    const {addNewEntry} = useOutletContext;
+    const {onSubmitEntry} = useOutletContext;
 
     const [newEntry, setNewEntry] = useState({
         date: new Intl.DateTimeFormat("en-US", {year: "numeric", month: "2-digit", day: "2-digit"}).format(Date.now()),
@@ -30,7 +30,7 @@ function JournalEntryForm() {
             body: JSON.stringify(newEntry)
         })
         .then((r) => r.json())
-        .then((newEntry) => addNewEntry(newEntry))
+        .then((newEntry) => onSubmitEntry(newEntry))
     }
 
     return (

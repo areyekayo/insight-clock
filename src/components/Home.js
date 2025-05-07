@@ -2,11 +2,11 @@ import JournalCard from "./JournalCard";
 import { Outlet, useOutletContext } from "react-router-dom";
 
 function Home() {
-    const {dateCards, journalEntries } = useOutletContext();
+    const {dates, entries } = useOutletContext();
     return (
         <div>
-            <Outlet context={journalEntries} />
-          {dateCards.map((dateEntry) => (
+            <Outlet context={entries} />
+          {dates.map((dateEntry) => (
             <div key={dateEntry.date}>
                 <JournalCard
                   date={dateEntry.date}
